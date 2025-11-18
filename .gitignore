@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Environments
+venv/
+env/
+.venv/
+.env/
+
+
+# Model files (trained models)
+models/
+*.pkl
+
+# MLflow or other experiment tracking files
+mlruns/
+.mlflow/
+
+# Docker
+docker-compose.override.yml
+*.dockerignore
+
+# VS Code settings
+.vscode/
+
+# Python packaging
+*.egg-info/
+dist/
+build/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Secrets and config files
+config.yaml
+secrets.json
+*.key
+*.pem
+.env
+
+# Checkpoints / saved checkpoints
+checkpoints/
+
+# Cache files
+.cache/

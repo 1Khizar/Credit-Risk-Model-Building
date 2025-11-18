@@ -1,0 +1,7 @@
+openpyxl
+numpy
+pandas
+scikit-learn
+dvc
+matplotlib
+seaborn
