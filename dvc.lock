@@ -1,0 +1,127 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python -m src.components.Dataingestion
+    deps:
+    - path: src/components/Dataingestion.py
+      hash: md5
+      md5: 8dcbdcd29da4293f27c82f3d00196c2a
+      size: 1668
+    - path: test_data/case_study1.xlsx
+      hash: md5
+      md5: b2c1224198c4d99a74caac7fb3419d33
+      size: 5382961
+    - path: test_data/case_study2.xlsx
+      hash: md5
+      md5: b13d458f3d7949afb7b9f31b65c33b11
+      size: 13384972
+    outs:
+    - path: Data/Raw/raw_data.xlsx
+      hash: md5
+      md5: 817eafcb6f0792eddc63a626f05b55b1
+      size: 15400117
+  data_preprocessing:
+    cmd: python -m src.components.Datapreprocessing
+    deps:
+    - path: Data/Raw/raw_data.xlsx
+      hash: md5
+      md5: 817eafcb6f0792eddc63a626f05b55b1
+      size: 15400117
+    - path: src/components/Datapreprocessing.py
+      hash: md5
+      md5: 5a58e2ad83abe5bfa2e040e511ae8f61
+      size: 1675
+    outs:
+    - path: Data/Process/preprocess_data_version1.xlsx
+      hash: md5
+      md5: 6b2dcacc783b9d9fa2de2d8ccb2a1263
+      size: 14800773
+  feature_engineering:
+    cmd: python -m src.components.Feature_engineering
+    deps:
+    - path: Data/Process/preprocess_data_version1.xlsx
+      hash: md5
+      md5: 6b2dcacc783b9d9fa2de2d8ccb2a1263
+      size: 14800773
+    - path: src/components/Feature_engineering.py
+      hash: md5
+      md5: 9d41c8342ee6b335041f846d9e9c68ab
+      size: 3530
+    outs:
+    - path: Data/Process/preprocess_data_version2.xlsx
+      hash: md5
+      md5: 25b16e5abcee867975b4d02616c3050e
+      size: 6463038
+  data_transformation:
+    cmd: python -m src.components.Data_transformation
+    deps:
+    - path: Data/Process/preprocess_data_version2.xlsx
+      hash: md5
+      md5: 25b16e5abcee867975b4d02616c3050e
+      size: 6463038
+    - path: src/components/Data_transformation.py
+      hash: md5
+      md5: a78505dce6ee7bd478c7688cebb17e7c
+      size: 3562
+    outs:
+    - path: Data/Process/final_preprocess_data.xlsx
+      hash: md5
+      md5: 15801df8259d6f979b4d696399831fc1
+      size: 6463037
+    - path: Data/Process/test_preprocess_data.xlsx
+      hash: md5
+      md5: 3b627da39ba25d6fbdcfe4c2daf618bc
+      size: 1274810
+    - path: Data/Process/train_preprocess_data.xlsx
+      hash: md5
+      md5: 901cd5b0b20c8a88632a5ce938883248
+      size: 5168240
+    - path: src/models/label_encoder.pkl
+      hash: md5
+      md5: 835c9f480b9651945abc60a1e246caf8
+      size: 263
+    - path: src/models/preprocessor.pkl
+      hash: md5
+      md5: b3305c3a948526770f0b81a3344f99c7
+      size: 1509
+  model_training:
+    cmd: python -m src.components.Model_training
+    deps:
+    - path: Data/Process/test_preprocess_data.xlsx
+      hash: md5
+      md5: 3b627da39ba25d6fbdcfe4c2daf618bc
+      size: 1274810
+    - path: Data/Process/train_preprocess_data.xlsx
+      hash: md5
+      md5: 901cd5b0b20c8a88632a5ce938883248
+      size: 5168240
+    - path: src/components/Model_training.py
+      hash: md5
+      md5: 2719b7a8cc84cf5eca6780dd467dae5b
+      size: 3780
+    outs:
+    - path: src/models/model.pkl
+      hash: md5
+      md5: 942a88bb97a872a5d0135e7149f446d8
+      size: 43092592
+  model_evaluation:
+    cmd: python -m src.components.Model_evaluation
+    deps:
+    - path: Data/Process/test_preprocess_data.xlsx
+      hash: md5
+      md5: 3b627da39ba25d6fbdcfe4c2daf618bc
+      size: 1274810
+    - path: src/components/Model_evaluation.py
+      hash: md5
+      md5: 22d51d3a643c71269231781eb5badb93
+      size: 4123
+    - path: src/models/model.pkl
+      hash: md5
+      md5: 942a88bb97a872a5d0135e7149f446d8
+      size: 43092592
+    outs:
+    - path: src/Results
+      hash: md5
+      md5: 592ff1adaac3911ce825c705682a4dba.dir
+      size: 71924
+      nfiles: 5
