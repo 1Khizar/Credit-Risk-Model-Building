@@ -1,7 +1,7 @@
-openpyxl
-numpy
+psycopg2-binary
+fastapi
+uvicorn
 pandas
+sqlalchemy
+python-dotenv
 scikit-learn
-dvc
-matplotlib
-seaborn

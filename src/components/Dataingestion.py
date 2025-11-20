@@ -24,7 +24,7 @@ class Dataingestion:
             
     def save_data(self, df1, df2):
         try: 
-            print("Entering the dave_data function to save the data...")
+            print("Entering the save_data function to save the data...")
                 
             # Merging the two input datasets
             df = pd.merge(df1, df2, how='inner', on='PROSPECTID')

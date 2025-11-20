@@ -5,7 +5,7 @@ from src.components.Datapreprocessing import Data_Preprocessing
 from src.components.Feature_engineering import Feature_Engineering
 from src.components.Data_transformation import Data_Transformation
 from src.components.Model_training import Model_Training
-
+from src.components.Model_evaluation import Model_Evaluation
 di = Dataingestion()
 df1,df2 = di.read_data()
 di.save_data(df1, df2)
@@ -21,4 +21,7 @@ dt.transformation()
 
 mt=Model_Training()
 mt.model_training()
+
+me=Model_Evaluation()
+me.evaluation() 
 

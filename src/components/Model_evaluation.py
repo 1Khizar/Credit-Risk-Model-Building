@@ -97,6 +97,4 @@ class Model_Evaluation:
 if __name__=="__main__":
     me=Model_Evaluation()
     me.evaluation()      
-        
-        
-        
+                

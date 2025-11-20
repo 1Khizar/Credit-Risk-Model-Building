@@ -1,0 +1,50 @@
+stages:
+  data_ingestion:
+    cmd: python -m src.components.Dataingestion
+    deps:
+      - src/components/Dataingestion.py
+      - test_data/case_study1.xlsx
+      - test_data/case_study2.xlsx
+    outs:
+      - Data/Raw/raw_data.xlsx
+  data_preprocessing:
+    cmd: python -m src.components.Datapreprocessing
+    deps:
+      - src/components/Datapreprocessing.py
+      - Data/Raw/raw_data.xlsx
+    outs:
+      - Data/Process/preprocess_data_version1.xlsx
+  feature_engineering:
+    cmd: python -m src.components.Feature_engineering
+    deps:
+      - src/components/Feature_engineering.py
+      - Data/Process/preprocess_data_version1.xlsx
+    outs:
+      - Data/Process/preprocess_data_version2.xlsx
+  data_transformation:
+    cmd: python -m src.components.Data_transformation
+    deps:
+      - src/components/Data_transformation.py
+      - Data/Process/preprocess_data_version2.xlsx
+    outs:
+      - Data/Process/final_preprocess_data.xlsx
+      - Data/Process/train_preprocess_data.xlsx
+      - Data/Process/test_preprocess_data.xlsx
+      - src/models/preprocessor.pkl
+      - src/models/label_encoder.pkl
+  model_training:
+    cmd: python -m src.components.Model_training
+    deps:
+      - src/components/Model_training.py
+      - Data/Process/train_preprocess_data.xlsx
+      - Data/Process/test_preprocess_data.xlsx
+    outs:
+      - src/models/model.pkl
+  model_evaluation:
+    cmd: python -m src.components.Model_evaluation
+    deps:
+      - src/components/Model_evaluation.py
+      - src/models/model.pkl
+      - Data/Process/test_preprocess_data.xlsx
+    outs:
+      - src/Results

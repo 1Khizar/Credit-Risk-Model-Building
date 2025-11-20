@@ -18,6 +18,7 @@ class Data_Transformation:
         try:
             print('\nEntering the transformation function...')
             df = pd.read_excel(self.input_path)
+            
             numeric_cols = df.select_dtypes(include=['int64', 'float64']).columns.tolist()
             categorical_cols = df.select_dtypes(include=['object']).columns.tolist()
 

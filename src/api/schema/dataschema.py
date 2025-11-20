@@ -1,0 +1,37 @@
+from pydantic import BaseModel
+
+class PredictionRequest(BaseModel):
+    Total_TL: int
+    Tot_Closed_TL: int
+    Tot_Active_TL: int
+    pct_tl_open_L6M: float
+    pct_closed_tl: float
+    pct_tl_open_L12M: float
+    pct_active_tl: float
+    Home_TL: int
+    Age_Oldest_TL: int
+    Other_TL: int
+    Secured_TL: int
+    enq_L3m: int
+    PL_enq_L6m: int
+    num_std: float
+    num_std_12mts: float
+    num_std_6mts: float
+    AGE: int
+    CC_enq_L6m: int
+    PL_enq: int
+    CC_enq_L12m: int
+    tot_enq: int
+    PL_enq_L12m: int
+    enq_L12m: int
+    time_since_recent_enq: int
+    enq_L6m: int
+    pct_of_active_TLs_ever: float
+    pct_PL_enq_L6m_of_ever: float
+    Credit_Score: int
+    pct_PL_enq_L6m_of_L12m: float
+    pct_CC_enq_L6m_of_L12m: float
+    MARITALSTATUS: str
+    EDUCATION: str
+    last_prod_enq2: str
+    first_prod_enq2: str     

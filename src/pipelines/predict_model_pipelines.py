@@ -56,8 +56,8 @@ if __name__ == "__main__":
         'pct_CC_enq_L6m_of_L12m': [0.1],
         'MARITALSTATUS': ['Single'],
         'EDUCATION': ['Graduate'],
-        'last_prod_enq2': [0],
-        'first_prod_enq2': [1]
+        'last_prod_enq2': ['PL'],
+        'first_prod_enq2': ['PL']
     })
     
     pp = Predict_Pipeline()
