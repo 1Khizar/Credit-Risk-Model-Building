@@ -6,9 +6,9 @@ import pandas as pd
 import mlflow
 import dagshub
 from urllib.parse import urlparse
-# dagshub.init(repo_owner='1Khizar', repo_name='Credit-Risk-Model-Building', mlflow=True)
-# mlflow.set_tracking_uri('https://dagshub.com/1Khizar/Credit-Risk-Model-Building.mlflow')
-# mlflow.set_registry_uri("https://dagshub.com/1Khizar/Credit-Risk-Model-Building.mlflow")
+dagshub.init(repo_owner='1Khizar', repo_name='Credit-Risk-Model-Building', mlflow=True)
+mlflow.set_tracking_uri('https://dagshub.com/1Khizar/Credit-Risk-Model-Building.mlflow')
+mlflow.set_registry_uri("https://dagshub.com/1Khizar/Credit-Risk-Model-Building.mlflow")
 
 
 class Model_Training:
