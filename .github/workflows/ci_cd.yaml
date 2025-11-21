@@ -55,11 +55,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image
-        run: |
-          docker build \
-            --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }} \
-            --build-arg ANOTHER_SECRET=${{ secrets.ANOTHER_SECRET }} \
-            -t ${{ secrets.DOCKER_USERNAME }}/credit-risk-model:latest .
+        run: docker build --build-arg DATABASE_URL=${{ secrets.DATABASE_URL }} --build-arg ANOTHER_SECRET=${{ secrets.ANOTHER_SECRET }} -t ${{ secrets.DOCKER_USERNAME }}/credit-risk-model:latest .
 
       - name: Push Docker image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/credit-risk-model:latest
