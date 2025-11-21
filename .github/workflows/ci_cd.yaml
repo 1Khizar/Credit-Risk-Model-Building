@@ -17,7 +17,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Step 2: Set environment variables 
+      # Step 2: Set environment variables
       - name: Set environment variables
         run: |
           echo "DATABASE_URL=${{ secrets.DATABASE_URL }}" >> $GITHUB_ENV
@@ -33,6 +33,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install openpyxl
           pip install dvc dvc[gdrive] dvc[s3] dvc[ssh] --upgrade
 
       # Step 5: Configure DVC remote using secrets
@@ -45,6 +46,12 @@ jobs:
       # Step 6: Pull DVC-tracked data (force to overwrite any unsaved files)
       - name: Pull data from DVC remote
         run: dvc pull --force
+      # Step 7a: Remove existing raw_data.xlsx to avoid DVC SCM conflicts
+      - name: Clean existing raw_data.xlsx
+        run: |
+          if [ -f Data/Raw/raw_data.xlsx ]; then
+            rm Data/Raw/raw_data.xlsx
+          fi
 
       # Step 7: Reproduce DVC pipeline
       - name: Run DVC pipeline
