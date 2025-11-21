@@ -1,0 +1,5 @@
+outs:
+- md5: b13d458f3d7949afb7b9f31b65c33b11
+  size: 13384972
+  hash: md5
+  path: case_study2.xlsx
