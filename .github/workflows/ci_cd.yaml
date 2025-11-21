@@ -31,6 +31,12 @@ jobs:
           pip install -r requirements.txt
           pip install dvc dvc[gdrive] dvc[s3] dvc[ssh] --upgrade
 
+      - name: Configure DVC remote
+        run: |
+          dvc remote modify origin auth basic
+          dvc remote modify origin user ${{ secrets.DAGSHUB_USER }}
+          dvc remote modify origin password ${{ secrets.DAGSHUB_TOKEN }}
+
       - name: Pull data from DVC remote
         run: dvc pull
 
