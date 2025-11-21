@@ -18,8 +18,8 @@ stages:
     outs:
     - path: Data/Raw/raw_data.xlsx
       hash: md5
-      md5: 4e1e33845d4715322b076296c2324e47
-      size: 15400124
+      md5: 576e3ed2d8ed004845de0dc9e69fd3b4
+      size: 15400126
   data_preprocessing:
     cmd: python -m src.components.Datapreprocessing
     deps:
