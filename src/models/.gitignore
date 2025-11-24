@@ -1,0 +1,50 @@
+/model.pkl
+src/models/*.pkl
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+*.venv/
+env/
+venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Logs
+*.log
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+*.dockerignore
+docker-compose.override.yml
+*.tgz
+*.tar
+*.tar.gz
+*.log
+*.pid
+*.swp
+
+# Database / Secrets
+*.sqlite3
+.env
+secrets.json
+
+# FastAPI / Pydantic
+__pycache__/
+*.pyc
+*.pyo
+
+# Other
+*.bak
+*.tmp
