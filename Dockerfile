@@ -5,13 +5,15 @@ WORKDIR /myapp
 # Copy and install dependencies
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install dvc[s3]  # Include any DVC remotes you use
+RUN pip install "dvc[s3]"  # Install DVC to pull files
 
 # Copy the rest of the application code
 COPY . .
 
-# Pull DVC-tracked models during build
-RUN dvc pull -f src/models/model.pkl src/models/preprocessor.pkl src/models/label_encoder.pkl
+# Pull DVC-managed model files
+RUN dvc pull src/models/model.pkl
+RUN dvc pull src/models/preprocessor.pkl
+RUN dvc pull src/models/label_encoder.pkl
 
 # Accept secrets as build arguments
 ARG DATABASE_URL
