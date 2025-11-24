@@ -11,9 +11,9 @@ RUN pip install "dvc[s3]"  # Install DVC to pull files
 COPY . .
 
 # Pull DVC-managed model files
-RUN dvc pull src/models/model.pkl
-RUN dvc pull src/models/preprocessor.pkl
-RUN dvc pull src/models/label_encoder.pkl
+# RUN dvc pull src/models/model.pkl
+# RUN dvc pull src/models/preprocessor.pkl
+# RUN dvc pull src/models/label_encoder.pkl
 
 # Accept secrets as build arguments
 ARG DATABASE_URL

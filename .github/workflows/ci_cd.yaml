@@ -37,7 +37,7 @@ jobs:
           git commit -m "Ensure DVC-managed files are ignored" || true
 
       - name: Pull DVC-tracked data
-        run: dvc pull --force
+        run: dvc pull
 
       - name: Run DVC pipeline
         run: dvc repro --force
