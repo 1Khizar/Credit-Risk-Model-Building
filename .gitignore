@@ -13,10 +13,6 @@ env/
 .env/
 
 
-# Model files (trained models)
-models/
-*.pkl
-
 # MLflow or other experiment tracking files
 mlruns/
 .mlflow/
