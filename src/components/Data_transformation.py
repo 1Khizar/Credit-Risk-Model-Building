@@ -70,6 +70,7 @@ class Data_Transformation:
             preprocess_train_data_path = os.path.join(self.output_path, 'train_preprocess_data.xlsx')
             train_data.to_excel(preprocess_train_data_path, index=False)
             print('The train preprocess data is saved.')
+
             
             preprocess_test_data_path = os.path.join(self.output_path, 'test_preprocess_data.xlsx')
             test_data.to_excel(preprocess_test_data_path, index=False)
