@@ -30,12 +30,6 @@ jobs:
           dvc remote modify origin user ${{ secrets.DAGSHUB_USER }}
           dvc remote modify origin password ${{ secrets.DAGSHUB_TOKEN }}
 
-      - name: Ensure Git ignores DVC outputs
-        run: |
-          git rm -r --cached src/models/*.pkl || true
-          git add .gitignore
-          git commit -m "Ensure DVC-managed files are ignored" || true
-
       - name: Pull DVC-tracked data
         run: dvc pull
 
@@ -45,12 +39,24 @@ jobs:
       - name: Push updated DVC outputs
         run: dvc push
 
+      - name: Upload Model Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-artifacts
+          path: src/models/
+
   docker_build:
     runs-on: ubuntu-latest
     needs: dvc_pipeline
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: Download Model Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: model-artifacts
+          path: src/models/
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
